@@ -1,7 +1,7 @@
 # Badges
 - Study project - AAD
 
-Criar um app que contém um sistema de reward (badges) para pessoas do CESAR.
+Criar um app que contém um sistema de reward (badges) para pessoas da empresa.
 
 *obs: Não precisa implementar todas as funcionalidades, porém se implementadas 100%, todos os assuntos serão englobados*
 
