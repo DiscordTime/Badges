@@ -8,7 +8,6 @@ import androidx.recyclerview.widget.RecyclerView
 import com.tab.mybadges.MockUserList
 import com.tab.mybadges.R
 import com.tab.mybadges.databinding.ActivityUserListBinding
-import com.tab.mybadges.entities.User
 
 class UserListActivity : AppCompatActivity() {
 
@@ -33,7 +32,6 @@ class UserListActivity : AppCompatActivity() {
         observeUserList()
         recyclerViewUserList.adapter = recyclerViewUserListAdapter
 
-
         layoutManager = LinearLayoutManager(this)
         recyclerViewUserList.layoutManager = layoutManager
     }
@@ -44,6 +42,4 @@ class UserListActivity : AppCompatActivity() {
         })
 
     }
-
-
 }
