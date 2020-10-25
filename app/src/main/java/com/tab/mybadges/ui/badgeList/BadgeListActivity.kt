@@ -26,8 +26,7 @@ class BadgeListActivity : AppCompatActivity() {
         recyclerViewBadgeList = binding.rvBadgeList
         recyclerViewBadgeListAdapter =
             BadgeListAdapter(
-                arrayListOf(),
-                R.layout.badge_list_rv_item
+                arrayListOf()
             )
         observeBadgeList()
         recyclerViewBadgeList.adapter = recyclerViewBadgeListAdapter
