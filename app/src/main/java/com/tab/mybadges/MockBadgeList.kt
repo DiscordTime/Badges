@@ -5,7 +5,7 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.tab.mybadges.entities.Badge
 
-object MockBadgeListViewModel: ViewModel() {
+object MockBadgeList: ViewModel() {
     fun createMockedBadgeListLiveData(): LiveData<List<Badge>> {
         var mutableBadgeList = MutableLiveData<List<Badge>>()
         val badgePhoto = R.drawable.ic_badge_photo_24
