@@ -1,26 +1,35 @@
 package com.tab.mybadges.ui.badgeList
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import androidx.fragment.app.Fragment
+import android.view.LayoutInflater
+import android.view.View
+import android.view.ViewGroup
 import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.tab.mybadges.databinding.ActivityBadgeListBinding
+import com.tab.mybadges.databinding.FragmentBadgeListBinding
 
-class BadgeListActivity : AppCompatActivity() {
+class BadgeListFragment : Fragment() {
 
-    private lateinit var binding: ActivityBadgeListBinding
+    private lateinit var binding: FragmentBadgeListBinding
+
     private lateinit var badgeListViewModel: BadgeListViewModel
 
     private lateinit var recyclerViewBadgeList: RecyclerView
     private lateinit var recyclerViewBadgeListAdapter: BadgeListAdapter
     private lateinit var layoutManager: RecyclerView.LayoutManager
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        binding = ActivityBadgeListBinding.inflate(layoutInflater)
-        setContentView(binding.root)
+    override fun onCreateView(
+        inflater: LayoutInflater, container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View? {
+        binding = FragmentBadgeListBinding.inflate(inflater, container, false)
+        return binding.root
+    }
 
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
         init()
         observeBadgeList()
         recyclerViewBadgeList.adapter = recyclerViewBadgeListAdapter
@@ -29,7 +38,7 @@ class BadgeListActivity : AppCompatActivity() {
 
     private fun init() {
         badgeListViewModel = BadgeListViewModel()
-        layoutManager = LinearLayoutManager(this)
+        layoutManager = LinearLayoutManager(context)
         recyclerViewBadgeList = binding.rvBadgeList
         recyclerViewBadgeListAdapter =
             BadgeListAdapter(

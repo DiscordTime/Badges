@@ -1,26 +1,35 @@
 package com.tab.mybadges.ui.userList
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import androidx.fragment.app.Fragment
+import android.view.LayoutInflater
+import android.view.View
+import android.view.ViewGroup
 import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.tab.mybadges.MockUserList
 import com.tab.mybadges.R
-import com.tab.mybadges.databinding.ActivityUserListBinding
+import com.tab.mybadges.databinding.FragmentUserListBinding
 
-class UserListActivity : AppCompatActivity() {
+class UserListFragment : Fragment() {
 
-    private lateinit var binding: ActivityUserListBinding
+    private lateinit var binding: FragmentUserListBinding
 
     private lateinit var recyclerViewUserList: RecyclerView
     private lateinit var recyclerViewUserListAdapter: UserListAdapter
     private lateinit var layoutManager: RecyclerView.LayoutManager
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        binding = ActivityUserListBinding.inflate(layoutInflater)
-        setContentView(binding.root)
+    override fun onCreateView(
+        inflater: LayoutInflater, container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View? {
+        binding = FragmentUserListBinding.inflate(inflater, container, false)
+        return binding.root
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
 
         recyclerViewUserList = binding.rvUserList
 
@@ -32,7 +41,7 @@ class UserListActivity : AppCompatActivity() {
         observeUserList()
         recyclerViewUserList.adapter = recyclerViewUserListAdapter
 
-        layoutManager = LinearLayoutManager(this)
+        layoutManager = LinearLayoutManager(context)
         recyclerViewUserList.layoutManager = layoutManager
     }
 
@@ -40,6 +49,5 @@ class UserListActivity : AppCompatActivity() {
         MockUserList.createMockedListLiveData().observe(this, Observer {
             recyclerViewUserListAdapter.setUserList(it)
         })
-
     }
 }
